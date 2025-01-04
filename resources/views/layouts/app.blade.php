@@ -186,7 +186,7 @@
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Recent Blog</h2>
                         <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url({{ asset('assets/images/image_1.jpg') }});"></a>
                             <div class="text">
                                 <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                                 <div class="meta">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                         <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url({{ asset('assets/images/image_2.jpg') }});"></a>
                             <div class="text">
                                 <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                                 <div class="meta">
@@ -244,10 +244,13 @@
         </div>
     </footer>
 
-
-
     <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+        </svg>
+    </div>
 
 
 </body>
