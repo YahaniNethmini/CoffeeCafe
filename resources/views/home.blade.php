@@ -59,22 +59,22 @@
                         <div class="col-md-4 d-flex ftco-animate">
                             <div class="icon"><span class="icon-phone"></span></div>
                             <div class="text">
-                                <h3>000 (123) 456 7890</h3>
-                                <p>A small river named Duden flows by their place and supplies.</p>
+                                <h3 style="color: white;">000 (123) 456 7890</h3>
+                                <p style="color: white;">A small river named Duden flows by their place and supplies.</p>
                             </div>
                         </div>
                         <div class="col-md-4 d-flex ftco-animate">
                             <div class="icon"><span class="icon-my_location"></span></div>
                             <div class="text">
-                                <h3>198 West 21th Street</h3>
-                                <p>	203 Fake St. Mountain View, San Francisco, California, USA</p>
+                                <h3 style="color: white;">198 West 21th Street</h3>
+                                <p style="color: white;">	203 Fake St. Mountain View, San Francisco, California, USA</p>
                             </div>
                         </div>
                         <div class="col-md-4 d-flex ftco-animate">
                             <div class="icon"><span class="icon-clock-o"></span></div>
                             <div class="text">
-                                <h3>Open Monday-Friday</h3>
-                                <p>8:00am - 9:00pm</p>
+                                <h3 style="color: white;">Open Monday-Friday</h3>
+                                <p style="color: white;">8:00am - 9:00pm</p>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                     <h2 class="mb-4">Our Story</h2>
                 </div>
                 <div>
-                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+                    <p style="color: white;">On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
                 </div>
             </div>
         </div>
@@ -181,8 +181,8 @@
                 <div class="col-md-6 pr-md-5">
                     <div class="heading-section text-md-right ftco-animate">
                         <span class="subheading">Discover</span>
-                        <h2 class="mb-4">Our Menu</h2>
-                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                        <h2 style="color: white;" class="mb-4">Our Menu</h2>
+                        <p style="color: white;" class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                         <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
                     </div>
                 </div>
@@ -267,55 +267,26 @@
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
                     <span class="subheading">Discover</span>
-                    <h2 class="mb-4">Best Coffee Sellers</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2 style="color: white;" class="mb-4">Best Coffee Sellers</h2>
+                    <p style="color: white;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url({{ asset('assets/images/menu-1.jpg') }});"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="product-single.html" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+
+                @foreach($products as $product)
+                    <div class="col-md-3">
+                        <div class="menu-entry">
+                            <a href="#" class="img" style="background-image: url({{ asset('assets/images/'.$product->image) }});"></a>
+                            <div class="text text-center pt-4">
+                                <h3><a href="#">{{ $product->name }}</a></h3>
+                                <p style="color: white;">{{ $product->description }}</p>
+                                <p class="price"><span>{{ $product->price }}</span></p>
+                                <p><a href="product-single.html" class="btn btn-primary btn-outline-primary">Show</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url({{ asset('assets/images/menu-2.jpg') }});"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url({{ asset('assets/images/menu-3.jpg') }});"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url({{ asset('assets/images/menu-4.jpg') }});"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -363,8 +334,8 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <span class="subheading">Testimony</span>
-                    <h2 class="mb-4">Customers Says</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2 style="color: white;" class="mb-4">Customers Says</h2>
+                    <p style="color: white;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
         </div>
