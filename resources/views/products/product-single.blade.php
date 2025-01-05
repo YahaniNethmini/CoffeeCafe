@@ -10,13 +10,17 @@
 
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-3 mt-5 bread">Product Detail</h1>
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span></p>
+{{--                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span></p>--}}
                     </div>
 
                 </div>
             </div>
         </div>
     </section>
+
+    @if( Session::has( 'success' ))
+        {{ Session::get( 'success' ) }}
+    @endif
 
     <section class="ftco-section">
         <div class="container">
@@ -61,8 +65,22 @@
 {{--	             	</span>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
-                    <p><a href="cart.html" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
-                </div>
+
+
+                        <form method="POST" action="{{ route('add.cart', $product->id) }}">
+                            @csrf
+                            <input type="text" name="product_id" value="{{ $product->id }}">
+                            <input type="text" name="product_name" value="{{ $product->name }}">
+                            <input type="text" name="product_price" value="{{ $product->price }}">
+                            <input type="text" name="product_image" value="{{ $product->image }}">
+                            <button type="submit" name="submit" class="btn btn-primary py-3 px-5">
+                                Add to Cart
+                            </button>
+                        </form>
+{{--                            <button type="submit" name="submit" class="btn btn-primary py-3 px-5">--}}
+{{--                                Add to Cart--}}
+{{--                            </button>--}}
+                        </div>
             </div>
         </div>
                 </div>
