@@ -184,7 +184,8 @@ svg:not(:root) {
   overflow: hidden; }
 
 table {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+}
 
 caption {
   padding-top: 0.75rem;
@@ -1466,7 +1467,9 @@ pre {
 .table-dark,
 .table-dark > th,
 .table-dark > td {
-  background-color: #c6c8ca; }
+  background-color: #c6c8ca;
+    width: 100%;
+}
 
 .table-hover .table-dark:hover {
   background-color: #b9bbbe; }
