@@ -18,9 +18,13 @@
         </div>
     </section>
 
-    @if( Session::has( 'success' ))
-        {{ Session::get( 'success' ) }}
-    @endif
+    <div class="container">
+        @if( Session::has( 'success' ))
+           <p class="alert {{ Session::get('alert-class', 'alert-info') }}">
+               {{ Session::get( 'success' ) }}
+           </p>
+        @endif
+    </div>
 
     <section class="ftco-section">
         <div class="container">
@@ -69,13 +73,23 @@
 
                         <form method="POST" action="{{ route('add.cart', $product->id) }}">
                             @csrf
-                            <input type="text" name="product_id" value="{{ $product->id }}">
-                            <input type="text" name="product_name" value="{{ $product->name }}">
-                            <input type="text" name="product_price" value="{{ $product->price }}">
-                            <input type="text" name="product_image" value="{{ $product->image }}">
-                            <button type="submit" name="submit" class="btn btn-primary py-3 px-5">
-                                Add to Cart
-                            </button>
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="product_name" value="{{ $product->name }}">
+                            <input type="hidden" name="product_price" value="{{ $product->price }}">
+                            <input type="hidden" name="product_image" value="{{ $product->image }}">
+
+                            @if($checkingInCart == 0)
+                                <button type="submit" name="submit" class="btn btn-primary py-3 px-5">
+                                    Add to Cart
+                                </button>
+                            @else
+                                <button class="btn btn-dark py-3 px-5" disabled>
+                                    Added to Cart
+                                </button>
+                            @endif
+
+
+
                         </form>
 {{--                            <button type="submit" name="submit" class="btn btn-primary py-3 px-5">--}}
 {{--                                Add to Cart--}}

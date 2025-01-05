@@ -20,7 +20,11 @@ class ProductsController extends Controller
             ->OrderBy('id', 'desc')
             ->get();
 
-        return view('products.product-single', compact('product', 'relatedProducts'));
+        $checkingInCart = Cart::where('product_id', $id)
+            ->where('user_id', Auth::user()->id)
+            ->count();
+
+        return view('products.product-single', compact('product', 'relatedProducts', 'checkingInCart'));
     }
 
     public function addCart(Request $request, $id)
