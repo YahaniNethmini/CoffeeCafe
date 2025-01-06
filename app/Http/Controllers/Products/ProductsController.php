@@ -50,5 +50,23 @@ class ProductsController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('products.cart', compact('cartProducts'));}
+        return view('products.cart', compact('cartProducts'));
     }
+
+    public function deleteProductCart($id)
+    {
+        $deleteProductCart = Cart::where('product_id', $id)
+            ->where('user_id', Auth::user()->id);
+
+        // Attempt to delete the product from the cart
+        $isDeleted = $deleteProductCart->delete();
+
+        if ($isDeleted) {
+            return Redirect::route('cart')
+                ->with(["delete" => "Product removed from cart successfully"]);
+        } else {
+            return Redirect::route('cart');
+        }
+    }
+
+}
