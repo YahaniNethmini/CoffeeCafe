@@ -45,7 +45,8 @@
                             </thead>
                             <tbody>
 
-                            @foreach($cartProducts as $cartProduct)
+                            @if($cartProducts->count() > 0)
+                                @foreach($cartProducts as $cartProduct)
                                 <tr class="text-center">
                                     <td class="product-remove"><a href="{{ route('cart.product.delete', $cartProduct->product_id) }}"><span class="icon-close"></span></a></td>
 
@@ -69,6 +70,11 @@
                                     <td class="total">{{ $cartProduct->price }}</td>
                                 </tr><!-- END TR-->
                             @endforeach
+                            @else
+                                <p class="alert alert-success">
+                                    No products in the cart
+                                </p>
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -80,83 +86,89 @@
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span>$20.60</span>
+                            <span>Rs. {{ $totalPrice }}</span>
                         </p>
                         <p class="d-flex">
                             <span>Delivery</span>
                             <span>$0.00</span>
                         </p>
-                        <p class="d-flex">
-                            <span>Discount</span>
-                            <span>$3.00</span>
-                        </p>
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            <span>Rs. {{ $totalPrice }}</span>
                         </p>
                     </div>
-                    <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                    @if($cartProducts->count() > 0)
+                        <p class="text-center">
+                            <a href="checkout.html" class="btn btn-primary py-3 px-4">
+                                Proceed to Checkout
+                            </a>
+                        </p>
+                    @else
+                        <p class="text-center alert alert-success">
+                                You cannot checkout because you have no items in cart
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <span class="subheading">Discover</span>
-                    <h2 class="mb-4">Related products</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="menu-entry">
-                        <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
-                        <div class="text text-center pt-4">
-                            <h3><a href="#">Coffee Capuccino</a></h3>
-                            <p>A small river named Duden flows by their place and supplies</p>
-                            <p class="price"><span>$5.90</span></p>
-                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="ftco-section">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row justify-content-center mb-5 pb-3">--}}
+{{--                <div class="col-md-7 heading-section ftco-animate text-center">--}}
+{{--                    <span class="subheading">Discover</span>--}}
+{{--                    <h2 class="mb-4">Related products</h2>--}}
+{{--                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="menu-entry">--}}
+{{--                        <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>--}}
+{{--                        <div class="text text-center pt-4">--}}
+{{--                            <h3><a href="#">Coffee Capuccino</a></h3>--}}
+{{--                            <p>A small river named Duden flows by their place and supplies</p>--}}
+{{--                            <p class="price"><span>$5.90</span></p>--}}
+{{--                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="menu-entry">--}}
+{{--                        <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>--}}
+{{--                        <div class="text text-center pt-4">--}}
+{{--                            <h3><a href="#">Coffee Capuccino</a></h3>--}}
+{{--                            <p>A small river named Duden flows by their place and supplies</p>--}}
+{{--                            <p class="price"><span>$5.90</span></p>--}}
+{{--                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="menu-entry">--}}
+{{--                        <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>--}}
+{{--                        <div class="text text-center pt-4">--}}
+{{--                            <h3><a href="#">Coffee Capuccino</a></h3>--}}
+{{--                            <p>A small river named Duden flows by their place and supplies</p>--}}
+{{--                            <p class="price"><span>$5.90</span></p>--}}
+{{--                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="menu-entry">--}}
+{{--                        <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>--}}
+{{--                        <div class="text text-center pt-4">--}}
+{{--                            <h3><a href="#">Coffee Capuccino</a></h3>--}}
+{{--                            <p>A small river named Duden flows by their place and supplies</p>--}}
+{{--                            <p class="price"><span>$5.90</span></p>--}}
+{{--                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 @endsection
