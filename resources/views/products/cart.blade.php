@@ -99,11 +99,13 @@
                         </p>
                     </div>
                     @if($cartProducts->count() > 0)
-                        <p class="text-center">
-                            <a href="checkout.html" class="btn btn-primary py-3 px-4">
+                        <form method="POST" action="{{route('prepare.checkout')}}">
+                            @csrf
+                            <input name="price" type="text" value="{{ $totalPrice }}">
+                            <button type="submit" name="submit" class="btn btn-primary py-3 px-4">
                                 Proceed to Checkout
-                            </a>
-                        </p>
+                            </button>
+                        </form>
                     @else
                         <p class="text-center alert alert-success">
                                 You cannot checkout because you have no items in cart

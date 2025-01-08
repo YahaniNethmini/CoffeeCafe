@@ -8,6 +8,7 @@ use App\Models\Product\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class ProductsController extends Controller
 {
@@ -72,4 +73,26 @@ class ProductsController extends Controller
         }
     }
 
+    public function prepareCheckout(Request $request)
+    {
+        $value = $request->price;
+
+        Session::put('price', $value);
+
+        $newPrice = Session::get('price');
+
+        if ($newPrice) {
+            return Redirect::route('checkout');
+        } else {
+            return Redirect::route('cart');
+        }
+    }
+
+    public function checkout()
+    {
+        echo "Checkout page";
+//        $price = Session::get('price');
+//
+//        return view('products.checkout', compact('price'));
+    }
 }
