@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product\Cart;
+use App\Models\Product\Order;
 use App\Models\Product\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,9 +91,15 @@ class ProductsController extends Controller
 
     public function checkout()
     {
-        echo "Checkout page";
-//        $price = Session::get('price');
-//
-//        return view('products.checkout', compact('price'));
+        return view('products.checkout');
+    }
+
+    public function storeCheckout(Request $request)
+    {
+        $storeCheckout = Order::create($request->all());
+
+        echo "Order placed successfully";
+
+//        return Redirect::route('product.single', $id)->with('success', 'Product added to cart successfully');
     }
 }

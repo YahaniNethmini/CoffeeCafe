@@ -17,7 +17,9 @@ Route::get('/products/product-single/{id}', [ProductsController::class, 'singleP
     ->name('product.single');
 Route::post('/products/product-single/{id}', [ProductsController::class, 'addCart'])
     ->name('add.cart');
-Route::get('/products/cart', [ProductsController::class, 'cart'])->name('cart');
+Route::get('/products/cart', [ProductsController::class, 'cart'])
+    ->name('cart')
+    ->middleware('auth');
 Route::get('/products/cart-delete/{id}', [ProductsController::class, 'deleteProductCart'])
     ->name('cart.product.delete');
 
@@ -26,3 +28,5 @@ Route::post('/products/prepare-checkout', [ProductsController::class, 'prepareCh
     ->name('prepare.checkout');
 Route::get('/products/checkout', [ProductsController::class, 'checkout'])
     ->name('checkout');
+Route::post('/products/checkout', [ProductsController::class, 'storeCheckout'])
+    ->name('process.checkout');
