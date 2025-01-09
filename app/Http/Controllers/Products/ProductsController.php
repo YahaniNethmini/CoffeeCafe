@@ -98,8 +98,15 @@ class ProductsController extends Controller
     {
         $storeCheckout = Order::create($request->all());
 
-        echo "Order placed successfully";
+        if ($storeCheckout) {
+            return view('products.pay');
+        } else {
+            return Redirect::route('checkout');
+        }
+    }
 
-//        return Redirect::route('product.single', $id)->with('success', 'Product added to cart successfully');
+    public function payWithPaypal()
+    {
+        return view('products.pay');
     }
 }

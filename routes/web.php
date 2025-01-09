@@ -30,3 +30,6 @@ Route::get('/products/checkout', [ProductsController::class, 'checkout'])
     ->name('checkout');
 Route::post('/products/checkout', [ProductsController::class, 'storeCheckout'])
     ->name('process.checkout');
+
+Route::get('/products/pay', [ProductsController::class, 'payWithPaypal'])
+    ->name('products.pay');
