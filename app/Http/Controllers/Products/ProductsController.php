@@ -114,7 +114,9 @@ class ProductsController extends Controller
     {
         $deleteItems = Cart::where('user_id', Auth::user()->id);
         $deleteItems->delete();
+
         if ($deleteItems){
+            Session::forget('price');
             return view('products.success');
         }
     }

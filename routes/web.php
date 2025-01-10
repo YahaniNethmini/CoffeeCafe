@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Middleware\CheckForPrice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,11 +28,15 @@ Route::get('/products/cart-delete/{id}', [ProductsController::class, 'deleteProd
 Route::post('/products/prepare-checkout', [ProductsController::class, 'prepareCheckout'])
     ->name('prepare.checkout');
 Route::get('/products/checkout', [ProductsController::class, 'checkout'])
-    ->name('checkout');
+    ->name('checkout')
+    ->middleware(['auth', CheckForPrice::class]);
 Route::post('/products/checkout', [ProductsController::class, 'storeCheckout'])
-    ->name('process.checkout');
+    ->name('process.checkout')
+    ->middleware(['auth', CheckForPrice::class]);
 
 Route::get('/products/pay', [ProductsController::class, 'payWithPaypal'])
-    ->name('products.pay');
+    ->name('products.pay')
+    ->middleware(['auth', CheckForPrice::class]);
 Route::get('/products/success', [ProductsController::class, 'success'])
-    ->name('products.pay.success');
+    ->name('products.pay.success')
+    ->middleware(['auth', CheckForPrice::class]);
