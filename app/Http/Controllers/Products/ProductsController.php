@@ -126,11 +126,12 @@ class ProductsController extends Controller
     {
         // Add validation
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|max:40',
+            'last_name' => 'required|max:40',
             'date' => 'required|date',
             'time' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'message' => 'required'
         ]);
 
         // Explicitly set the authenticated user's ID
