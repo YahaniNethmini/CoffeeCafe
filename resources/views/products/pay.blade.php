@@ -30,7 +30,7 @@
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: '300' // Can also reference a variable or function
+                                value: '{{ Session::get('price') }}'
                             }
                         }]
                     });
@@ -38,7 +38,7 @@
                 // Finalize the transaction after payer approval
                 onApprove: (data, actions) => {
                     return actions.order.capture().then(function(orderData) {
-                        window.location.href='https://coffee-cafe.test/products/cart';
+                        window.location.href='https://coffee-cafe.test/products/success';
                     });
                 }
             }).render('#paypal-button-container');
