@@ -40,3 +40,6 @@ Route::get('/products/pay', [ProductsController::class, 'payWithPaypal'])
 Route::get('/products/success', [ProductsController::class, 'success'])
     ->name('products.pay.success')
     ->middleware(['auth', CheckForPrice::class]);
+
+Route::post('/booking/tables', [ProductsController::class, 'BookTables'])
+    ->name('booking.tables');

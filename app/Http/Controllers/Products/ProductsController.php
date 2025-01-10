@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product\Booking;
 use App\Models\Product\Cart;
 use App\Models\Product\Order;
 use App\Models\Product\Product;
@@ -118,6 +119,34 @@ class ProductsController extends Controller
         if ($deleteItems){
             Session::forget('price');
             return view('products.success');
+        }
+    }
+
+    public function BookTables(Request $request)
+    {
+        // Add validation
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'date' => 'required|date',
+            'time' => 'required',
+            'phone' => 'required'
+        ]);
+
+        // Explicitly set the authenticated user's ID
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+
+        if ($request->date > date('n/j/Y')) {
+            $bookTables = Booking::create($data);
+
+            if($bookTables) {
+                return Redirect::route('home')->with(['booking' => 'Booking successful']);
+            } else {
+                return Redirect::route('home')->with(['error' => 'Booking failed']);
+            }
+        } else {
+            return Redirect::route('home')->with(['date' => 'Invalid date']);
         }
     }
 }
