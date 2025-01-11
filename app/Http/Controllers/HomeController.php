@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product\Review;
 use Illuminate\Http\Request;
 use App\Models\Product\Product;
 
@@ -24,8 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::select()->orderBy('id', 'desc')->take('4')->get();
+        $products = Product::select()
+            ->orderBy('id', 'desc')
+            ->take('4')
+            ->get();
+        $reviews = Review::select()
+            ->orderBy('id', 'desc')
+            ->take('4')
+            ->get();
 
-        return view('home', compact('products'));
+        return view('home', compact('products', 'reviews'));
     }
 }
