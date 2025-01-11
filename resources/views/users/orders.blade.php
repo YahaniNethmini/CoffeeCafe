@@ -33,6 +33,7 @@
                                 <th>Email</th>
                                 <th>Price</th>
                                 <th>Status</th>
+                                <th>Write Review</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,6 +48,13 @@
                                         <td>{{ $order->email }}</td>
                                         <td>{{ $order->price }}</td>
                                         <td>{{ $order->status }}</td>
+                                        <td>
+                                            @if( $order->status == "Delivered" )
+                                                <a class="btn btn-primary" href="{{ route('write.reviews') }}">Write Review</a>
+                                            @else
+                                                <p>Not available yet</p>
+                                            @endif
+                                        </td>
                                     </tr><!-- END TR-->
                                 @endforeach
                             @else

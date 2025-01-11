@@ -32,6 +32,7 @@
                                 <th>Time</th>
                                 <th>Phone</th>
                                 <th>Status</th>
+                                <th>Write Review</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,6 +46,13 @@
                                         <td class="price">{{ $booking->time }}</td>
                                         <td>{{ $booking->phone }}</td>
                                         <td>{{ $booking->status }}</td>
+                                        <td>
+                                            @if( $booking->status == "Booked" )
+                                                <a class="btn btn-primary" href="{{ route('write.reviews') }}">Write Review</a>
+                                            @else
+                                                <p>Not available yet</p>
+                                            @endif
+                                        </td>
                                     </tr><!-- END TR-->
                                 @endforeach
                             @else

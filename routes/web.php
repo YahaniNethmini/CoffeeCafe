@@ -56,3 +56,9 @@ Route::get('users/orders', [UsersController::class, 'displayOrders'])
     ->name('users.orders');
 Route::get('users/bookings', [UsersController::class, 'displayBookings'])
     ->name('users.bookings');
+
+//write reviews
+Route::get('products/write-reviews', [UsersController::class, 'writeReview'])
+    ->name('write.reviews');
+Route::post('products/write-reviews', [UsersController::class, 'processWriteReview'])
+    ->name('process.write.review');
