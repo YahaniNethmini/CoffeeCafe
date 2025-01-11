@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/bg_1.jpg);"  data-stellar-background-ratio="0.5">
+    <section class="ftco-section img" id="ftco-testimony" style="background-image: url({{ asset('assets/images/bg_1.jpg') }});">
         <div class="overlay"></div>
         <div class="container">
             <div class="row justify-content-center mb-5">
@@ -105,7 +105,7 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url({{ asset('assets/images/bg_2.jpg') }});">
         <div class="overlay"></div>
         <div class="container">
             <div class="row justify-content-center">
