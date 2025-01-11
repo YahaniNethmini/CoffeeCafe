@@ -110,8 +110,9 @@
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 
                         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                        <li class="nav-item cart"><a href="{{ route('cart') }}" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
-
+                        @if(isset(Auth::user()->id))
+                            <li class="nav-item cart"><a href="{{ route('cart') }}" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
+                        @endif
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item"><a href="login.html" class="nav-link">login</a></li>

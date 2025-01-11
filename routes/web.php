@@ -21,7 +21,7 @@ Route::post('/products/product-single/{id}', [ProductsController::class, 'addCar
     ->name('add.cart');
 Route::get('/products/cart', [ProductsController::class, 'cart'])
     ->name('cart')
-    ->middleware('auth');
+    ->middleware("auth:web");
 Route::get('/products/cart-delete/{id}', [ProductsController::class, 'deleteProductCart'])
     ->name('cart.product.delete');
 
@@ -53,12 +53,16 @@ Route::get('products/menu', [ProductsController::class, 'menu'])
 
 //users pages
 Route::get('users/orders', [UsersController::class, 'displayOrders'])
-    ->name('users.orders');
+    ->name('users.orders')
+    ->middleware('auth:web');
 Route::get('users/bookings', [UsersController::class, 'displayBookings'])
-    ->name('users.bookings');
+    ->name('users.bookings')
+    ->middleware('auth:web');
 
 //write reviews
 Route::get('products/write-reviews', [UsersController::class, 'writeReview'])
-    ->name('write.reviews');
+    ->name('write.reviews')
+    ->middleware('auth:web');
 Route::post('products/write-reviews', [UsersController::class, 'processWriteReview'])
-    ->name('process.write.review');
+    ->name('process.write.review')
+    ->middleware('auth:web');
