@@ -9,8 +9,8 @@
                 <div class="row slider-text justify-content-center align-items-center">
 
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                        <h1 class="mb-3 mt-5 bread">My Orders</h1>
-{{--                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>--}}
+                        <h1 class="mb-3 mt-5 bread">My Bookings</h1>
+                        {{--                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>--}}
                     </div>
 
                 </div>
@@ -28,30 +28,28 @@
                             <tr class="text-center" style="background-color: #c49b63; height: 80px;">
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>Email</th>
-                                <th>Price</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Phone</th>
                                 <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @if($orders->count() > 0)
-                                @foreach($orders as $order)
-                                    <tr class="text-center"  style="height: 60px;">
-                                        <td class="product-remove">{{ $order->first_name }}</td>
-                                        <td class="image-prod">{{ $order->last_name }}</td>
-                                        <td class="product-name">{{ $order->address }}</td>
-                                        <td class="price">{{ $order->city }}</td>
-                                        <td>{{ $order->email }}</td>
-                                        <td>{{ $order->price }}</td>
-                                        <td>{{ $order->status }}</td>
+                            @if($bookings->count() > 0)
+                                @foreach($bookings as $booking)
+                                    <tr class="text-center" style="height: 60px;">
+                                        <td class="product-remove">{{ $booking->first_name }}</td>
+                                        <td class="image-prod">{{ $booking->last_name }}</td>
+                                        <td class="product-name">{{ $booking->date }}</td>
+                                        <td class="price">{{ $booking->time }}</td>
+                                        <td>{{ $booking->phone }}</td>
+                                        <td>{{ $booking->status }}</td>
                                     </tr><!-- END TR-->
                                 @endforeach
                             @else
                                 <p class="alert alert-success">
-                                   You have no orders yet.
+                                    You have no bookings yet.
                                 </p>
                             @endif
                             </tbody>

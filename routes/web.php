@@ -54,3 +54,5 @@ Route::get('products/menu', [ProductsController::class, 'menu'])
 //users pages
 Route::get('users/orders', [UsersController::class, 'displayOrders'])
     ->name('users.orders');
+Route::get('users/bookings', [UsersController::class, 'displayBookings'])
+    ->name('users.bookings');
