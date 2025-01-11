@@ -36,4 +36,24 @@ class HomeController extends Controller
 
         return view('home', compact('products', 'reviews'));
     }
+
+    public function services()
+    {
+        return view('pages.services');
+    }
+
+    public function about()
+    {
+        $reviews = Review::select()
+            ->orderBy('id', 'desc')
+            ->take('4')
+            ->get();
+
+        return view('pages.about', compact('reviews'));
+    }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
 }
