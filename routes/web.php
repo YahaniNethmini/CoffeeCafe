@@ -34,6 +34,7 @@ Route::post('/products/checkout', [ProductsController::class, 'storeCheckout'])
     ->name('process.checkout')
     ->middleware(['auth', CheckForPrice::class]);
 
+//pay and success
 Route::get('/products/pay', [ProductsController::class, 'payWithPaypal'])
     ->name('products.pay')
     ->middleware(['auth', CheckForPrice::class]);
@@ -41,5 +42,10 @@ Route::get('/products/success', [ProductsController::class, 'success'])
     ->name('products.pay.success')
     ->middleware(['auth', CheckForPrice::class]);
 
+//booking
 Route::post('/booking/tables', [ProductsController::class, 'BookTables'])
     ->name('booking.tables');
+
+//menu
+Route::get('products/menu', [ProductsController::class, 'menu'])
+    ->name('products.menu');

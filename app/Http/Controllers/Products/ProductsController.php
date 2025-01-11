@@ -24,7 +24,7 @@ class ProductsController extends Controller
             ->get();
 
         $checkingInCart = Cart::where('product_id', $id)
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::user())
             ->count();
 
         return view('products.product-single', compact('product', 'relatedProducts', 'checkingInCart'));
@@ -149,5 +149,21 @@ class ProductsController extends Controller
         } else {
             return Redirect::route('home')->with(['date' => 'Invalid date']);
         }
+    }
+
+    public function menu()
+    {
+        $desserts = Product::select()
+            ->where("type", "desserts")
+            ->orderBy('id', 'desc')
+            ->take(4)
+            ->get();
+
+        $drinks = Product::select()
+            ->where("type", "drinks")
+            ->orderBy('id', 'desc')
+            ->take(4)
+            ->get();
+        return view('products.menu', compact('desserts', 'drinks'));
     }
 }
