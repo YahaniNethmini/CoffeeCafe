@@ -166,4 +166,6 @@ class ProductsController extends Controller
             ->get();
         return view('products.menu', compact('desserts', 'drinks'));
     }
+
+
 }

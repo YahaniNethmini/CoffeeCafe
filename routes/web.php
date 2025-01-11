@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Users\UsersController;
 use App\Http\Middleware\CheckForPrice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,7 @@ Route::post('/booking/tables', [ProductsController::class, 'BookTables'])
 //menu
 Route::get('products/menu', [ProductsController::class, 'menu'])
     ->name('products.menu');
+
+//users pages
+Route::get('users/orders', [UsersController::class, 'displayOrders'])
+    ->name('users.orders');
