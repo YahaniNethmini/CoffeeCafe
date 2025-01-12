@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admins\AdminsController;
 use App\Http\Controllers\Products\ProductsController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Middleware\CheckForPrice;
@@ -71,3 +72,12 @@ Route::group(['prefix' => 'users'], function (){
         ->name('process.write.review')
         ->middleware('auth:web');
 });
+
+//admin
+Route::get('admin/login', [AdminsController::class, 'viewLogin'])
+    ->name('view.login');
+Route::post('admin/login', [AdminsController::class, 'checkLogin'])
+    ->name('check.login');
+Route::get('admin/index', [AdminsController::class, 'index'])
+    ->name('admins.dashboard');
+
